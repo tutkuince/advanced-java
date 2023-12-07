@@ -4,7 +4,7 @@ import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 // When you want to filter/match
-public class TestPredicate {
+public class PredicateTest {
     public static void main(String[] args) {
         // Predicate<T> is a functional interface i.e. one abstract method:
         // boolean test(T t);
