@@ -26,7 +26,7 @@ public class Exercise05 {
         listPeople.forEach(System.out::println);
     }
 
-    private static List<Person> getPeople() {
+    public static List<Person> getPeople() {
         List<Person> result = new ArrayList<>();
         result.add(new Person("Mike", 33, 1.8));
         result.add(new Person("Mary", 25, 1.4));
