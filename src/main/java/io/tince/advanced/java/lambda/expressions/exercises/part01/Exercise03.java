@@ -1,4 +1,4 @@
-package io.tince.advanced.java.lambda.expressions.exercises;
+package io.tince.advanced.java.lambda.expressions.exercises.part01;
 
 import java.util.function.Predicate;
 
