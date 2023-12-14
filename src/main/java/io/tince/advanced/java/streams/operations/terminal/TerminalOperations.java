@@ -24,6 +24,23 @@ public class TerminalOperations {
         System.out.println(word);
     }
 
+    public static void doForEach(){
+
+        // void forEach(Consumer)
+        // As there is no return value, forEach() is not a reduction.
+        // As the return type is 'void', if you want something to
+        // happen, it has to happen inside the Consumer (side-effect).
+        Stream<String> names = Stream.of("Cathy", "Pauline", "Zoe");
+        names.forEach(System.out::print);//CathyPaulineZoe
+
+        // Notes: forEach is also a method in the Collection interface.
+        //        Streams cannot be the source of a for-each loop
+        //        because streams do not implement the Iterable interface.
+        Stream<Integer> s = Stream.of(1);
+        //       for(Integer i : s){}// error: required array or Iterable
+
+    }
+
     public static void doReduce1(){
 
         // The reduce() method combines a stream into a single object.
