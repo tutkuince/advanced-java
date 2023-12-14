@@ -70,6 +70,26 @@ public class TerminalOperations {
 
     }
 
+    /*
+    public static void doMinAndMax(){
+
+        // Optional<T> min(Comparator)
+        // Optional<T> max(Comparator)
+        // Optional introduce in Java 8 to replace 'null'. If the stream is
+        // empty then the Optional will be empty (and we won't have to
+        // deal with null).
+        Optional<String> min = Stream.of("cow", "horse", "pig")
+                                .min((s1, s2) -> s1.length()-s2.length());
+        min.ifPresent(System.out::println);// cow
+
+        Optional<Integer> max = Stream.of(4,6,2,9,9)
+                                .max((i1, i2) -> i1-i2);
+        max.ifPresent(System.out::println);//9
+
+    }
+
+    */
+
     public static void doMatches(){
 
         // boolean anyMatch(Predicate)
