@@ -1,5 +1,6 @@
 package io.tince.advanced.java.streams.operations.terminal;
 
+import java.util.function.BinaryOperator;
 import java.util.stream.Stream;
 
 public class TerminalOperations {
@@ -23,6 +24,32 @@ public class TerminalOperations {
         System.out.println(word);
     }
 
+    public static void doReduce2(){
+
+        // Optional<T> reduce(BinaryOperator<T> accumulator)
+        // When you leave out the indentity, an Optional is
+        // returned because there may not be any data (all the
+        // elements could have been filtered out earlier). There are
+        // 3 possible results:
+        //      a) empty stream => empty Optional returned
+        //      b) one element in stream => that element is returned
+        //      c) multiple elements in stream => accumulator is applied
+        BinaryOperator<Integer> op = (a, b) -> a+b;
+        Stream<Integer> empty               = Stream.empty();
+        Stream<Integer> oneElement          = Stream.of(6);
+        Stream<Integer> multipleElements    = Stream.of(3, 4, 5);
+        empty.reduce(op).ifPresent(System.out::println);            //
+        oneElement.reduce(op).ifPresent(System.out::println);       // 6
+        multipleElements.reduce(op).ifPresent(System.out::println); // 12
+        // Why not just require the identity and remove this method?
+        // Sometimes it is nice to know if the stream is empty as opposed
+        // to the case where there is a value returned from the accumulator
+        // that happens to match the identity (however unlikely).
+        Integer val = Stream.of(1,1,1)
+                //     .filter(n -> n > 5)      // val is 1 this way
+                .reduce(1, (a, b) -> a );// val is 1 this way too
+        System.out.println(val);// 1
+    }
     public static void doReduce3(){
 
         // <U> U reduce (U identity,
