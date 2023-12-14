@@ -1,6 +1,10 @@
 package io.tince.advanced.java.streams.operations.terminal;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.BinaryOperator;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class TerminalOperations {
@@ -38,6 +42,60 @@ public class TerminalOperations {
         //        because streams do not implement the Iterable interface.
         Stream<Integer> s = Stream.of(1);
         //       for(Integer i : s){}// error: required array or Iterable
+
+    }
+
+    public static void doCount(){
+
+        long count = Stream.of("dog", "cat")
+                .count();
+        System.out.println(count); // 2
+
+    }
+
+    public static void doMinAndMax(){
+
+        // Optional<T> min(Comparator)
+        // Optional<T> max(Comparator)
+        // Optional introduce in Java 8 to replace 'null'. If the stream is
+        // empty then the Optional will be empty (and we won't have to
+        // deal with null).
+        Optional<String> min = Stream.of("deer", "horse", "pig")
+                .min((s1, s2) -> s1.length()-s2.length());
+        min.ifPresent(System.out::println);// pig
+
+        Optional<Integer> max = Stream.of(4,6,2,12,9)
+                .max((i1, i2) -> i1-i2);
+        max.ifPresent(System.out::println);// 12
+
+    }
+
+    public static void doMatches(){
+
+        // boolean anyMatch(Predicate)
+        // boolean allMatch(Predicate)
+        // boolean noneMatch(Predicate)
+        List<String> names = Arrays.asList("Alan", "Brian", "Colin");
+        Predicate<String> pred = name -> name.startsWith("A");
+        System.out.println(names.stream().anyMatch(pred)); // true (one does)
+        System.out.println(names.stream().allMatch(pred)); // false (two don't)
+        System.out.println(names.stream().noneMatch(pred));// false (one does)
+    }
+    public static void doFindAnyFindFirst(){
+
+        // Optional<T> findAny()
+        // Optional<T> findFirst()
+        // These are terminal operations but not reductions
+        // as they sometimes return without processing all
+        // the elements in the stream. Reductions reduce the
+        // entire stream into one value.
+        Optional<String> any = Stream.of("John", "Paul")
+                .findAny();
+        any.ifPresent(System.out::println);// John (usually)
+
+        Optional<String> first = Stream.of("John", "Paul")
+                .findFirst();
+        first.ifPresent(System.out::println);// John
 
     }
 
