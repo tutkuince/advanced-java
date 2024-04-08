@@ -18,3 +18,7 @@
 ![image](https://github.com/tutkuince/advanced-java/assets/33215575/acc0a915-ce18-4ecb-adc4-c6137c4ba486)
 ![image](https://github.com/tutkuince/advanced-java/assets/33215575/7510341c-4662-402b-8307-8225e278070d)
 
+- <b>Set</b>: Collections with no duplicate elements
+  - <b>HashSet</b>
+    - Unsorted, unordered <i>Set</i>, uses the hashcode of the object being inserted; the more efficient your <i>hashCode()</i> implementation, the better access performance you will get.
+    - use this class when you want to a collection with no duplicates and you don't care about order when you iterate through it.
