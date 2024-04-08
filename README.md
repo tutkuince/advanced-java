@@ -22,3 +22,11 @@
   - <b>HashSet</b>
     - Unsorted, unordered <i>Set</i>, uses the hashcode of the object being inserted; the more efficient your <i>hashCode()</i> implementation, the better access performance you will get.
     - use this class when you want to a collection with no duplicates and you don't care about order when you iterate through it.
+  - <b>LinkedHashSet</b>
+    - an ordered version of <i>HashSet</i> (insertion order).
+    - elements are doubly-lined to each other
+    - use this class instead of HashSet when you care about the iteration order.
+  - <b>TreeSet</b>
+    - a sorted collection ("Tree")
+    - elements can be sorted according to their "natural order" - for <i>String</i>'s the natural order is alphabetic; for <i>Integer'</i>s, the natural order is numeric.
+![image](https://github.com/tutkuince/advanced-java/assets/33215575/4132e9a9-6faa-4344-90f7-bf0200c0c324)
