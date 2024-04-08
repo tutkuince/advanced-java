@@ -29,4 +29,5 @@
   - <b>TreeSet</b>
     - a sorted collection ("Tree")
     - elements can be sorted according to their "natural order" - for <i>String</i>'s the natural order is alphabetic; for <i>Integer'</i>s, the natural order is numeric.
+
 ![image](https://github.com/tutkuince/advanced-java/assets/33215575/4132e9a9-6faa-4344-90f7-bf0200c0c324)
