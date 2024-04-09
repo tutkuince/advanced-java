@@ -31,3 +31,19 @@
     - elements can be sorted according to their "natural order" - for <i>String</i>'s the natural order is alphabetic; for <i>Integer'</i>s, the natural order is numeric.
 
 ![image](https://github.com/tutkuince/advanced-java/assets/33215575/4132e9a9-6faa-4344-90f7-bf0200c0c324)
+- <b>Map</b>: maps keys to values; keys are unique; each key can map to at most one value
+  - <b>HashMap</b>
+    - unsorted, unordered <i>Map</i>.
+    - uses the hashcode of the object being inserted; the more efficient your <i>hashCode()</i> implementation, the better access performance you will get.
+    - use this class when you want a <i>Map</i> and you don't care about order when you iterate through it.
+    - allows one <i>null</i> key and multiple <i>null</i> values.
+  - <b>LinkedHashMap</b>
+    - maintains insertion order
+  - <b>TreeMap</b>
+    - a sorted Map; sorted by natural order of it's keys or by a custom order(via a comparator)
+  - <b>Hashtable</b>
+    - similar to <i>HashMap</i> except <i>Hashtable</i> is thread-safe(slower) anbd nulls are not allowed.
+   
+
+
+  
