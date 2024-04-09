@@ -43,7 +43,7 @@
     - a sorted Map; sorted by natural order of it's keys or by a custom order(via a comparator)
   - <b>Hashtable</b>
     - similar to <i>HashMap</i> except <i>Hashtable</i> is thread-safe(slower) anbd nulls are not allowed.
-   
+![image](https://github.com/tutkuince/advanced-java/assets/33215575/51ff6fac-f016-4bb6-8f8f-aa7f67ecb9df)
 
 
   
