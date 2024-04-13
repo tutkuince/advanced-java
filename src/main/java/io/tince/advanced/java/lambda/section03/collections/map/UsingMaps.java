@@ -1,6 +1,7 @@
 package io.tince.advanced.java.lambda.section03.collections.map;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 public class UsingMaps {
@@ -40,5 +41,12 @@ public class UsingMaps {
         // John     -> 18
         // MAry     -> 21
         mapTree.entrySet().forEach(entry -> System.out.println(entry.getKey() + " -> " + entry.getValue()));
+
+        Set<String> keys = mapTree.keySet();
+        // putIfAbsent()
+        mapTree.put("Mike", null);              // [Chris=33, John=18, Mary=21, Mike=null]
+        mapTree.putIfAbsent("Chris", 99);       // [Chris=33, John=18, Mary=21, Mike=null]
+        mapTree.putIfAbsent("Mike", 55);        // [Chris=33, John=18, Mary=21, Mike=55]
+        mapTree.putIfAbsent("Luke", 31);        // [Chris=33, John=18, Luke=31, Mary=21, Mike=null]
     }
 }
