@@ -43,10 +43,20 @@ public class UsingMaps {
         mapTree.entrySet().forEach(entry -> System.out.println(entry.getKey() + " -> " + entry.getValue()));
 
         Set<String> keys = mapTree.keySet();
-        // putIfAbsent()
+        // putIfAbsent() -> If value is null, new value will be there with this method, but if not it won't be updated.
         mapTree.put("Mike", null);              // [Chris=33, John=18, Mary=21, Mike=null]
         mapTree.putIfAbsent("Chris", 99);       // [Chris=33, John=18, Mary=21, Mike=null]
         mapTree.putIfAbsent("Mike", 55);        // [Chris=33, John=18, Mary=21, Mike=55]
-        mapTree.putIfAbsent("Luke", 31);        // [Chris=33, John=18, Luke=31, Mary=21, Mike=null]
+        mapTree.putIfAbsent("Luke", 31);        // [Chris=33, John=18, Luke=31, Mary=21, Mike=55]
+
+        // replace() and replaceAll
+        Integer original = mapTree.replace("Chris", 81);
+        System.out.println(mapTree);            // [Chris=33, John=18, Luke=31, Mary=21, Mike=55]
+        // replaceAll(BiFunction<K, V, V> fn) - note the return type is of type V also
+        mapTree.replaceAll((name, age) -> name.length());
+        System.out.println(mapTree);            // [Chris=5, John=4, Luke=4, Mary=4, Mike=4]
+
+        // remove
+        mapTree.remove("Mike");             // [Chris=5, John=4, Luke=4, Mary=4]
     }
 }
