@@ -33,5 +33,12 @@ public class UsingMaps {
         mapTree.put("Mary", 23);
         mapTree.put("Chris", 62);
         mapTree.forEach((k, v) -> System.out.println(k + " maps to " + v));
+
+        // Set<Map.Entry<K, V>> entrySet() - Map.Entry encapsulates a key-value pair
+        // go from a Map to a Set ( an official Collection )
+        // Chris    -> 33
+        // John     -> 18
+        // MAry     -> 21
+        mapTree.entrySet().forEach(entry -> System.out.println(entry.getKey() + " -> " + entry.getValue()));
     }
 }
