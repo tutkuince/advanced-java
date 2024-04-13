@@ -27,5 +27,11 @@ public class UsingMaps {
         System.out.println(mapTree.size());                 // 3
         mapTree.clear();
         System.out.println(mapTree.size());                 // 0
+
+        // forEach(BiConsumer) -> BiConsumer<T, U>
+        mapTree.put("John", 18);
+        mapTree.put("Mary", 23);
+        mapTree.put("Chris", 62);
+        mapTree.forEach((k, v) -> System.out.println(k + " maps to " + v));
     }
 }
