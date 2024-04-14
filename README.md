@@ -62,3 +62,9 @@
   - <i>ArrayDeque</i>
     - expandable-array implementation of the <i>Deque</i> interface (no capacity restrictions)
     - API: "likely to be faster than <i>Stack</i> when used as a stack, and faster than <i>LinkedList</i> when used as a queue".
+![image](https://github.com/tutkuince/advanced-java/assets/33215575/ee6fd5c8-3e72-4785-a3e1-c366d33b7fa7)
+![image](https://github.com/tutkuince/advanced-java/assets/33215575/a4a57519-776e-4a62-b08e-1e07a5e4d463)
+![image](https://github.com/tutkuince/advanced-java/assets/33215575/1c116a2e-1a99-48e8-af9e-e71e7af61e04)
+
+
+
