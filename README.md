@@ -49,8 +49,9 @@
 - <b>Queue</b>: a collection that specifies the order in which elements are to be processed.
   - Typically the order is FIFO (First In First Out).
   - Exceptions are priority queues ( order is natural ordering or according to a supplied comparator) and LIFO (Last In First Out) queues (stacks).
-  - LinkedList
+  - <i>LinkedList</i>
     - as <i>LinkedList</i> implements <i>Queue</i>; basic queues can be handled with a <i>LinkedList</i>
-
-
-  
+  - <i>PriorityQueue</i>
+    - <i>PriorityQueue</i> orders the elements relative to each other such that "priority-in, priority-out" (as opposed to a FIFO or LIFO)
+    - the elements are either ordered by natural order or by a custom order via a comparator.
+    - elements that are sorted first will be accessed first.
