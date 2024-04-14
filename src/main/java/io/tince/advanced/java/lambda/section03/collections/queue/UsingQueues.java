@@ -27,5 +27,7 @@ public class UsingQueues {
         System.out.println(queue.remove()); // 1    Head -> [2, 3, 4]
         System.out.println(queue.poll());   // 2    Head -> [3, 4]
         System.out.println(queue);          // [3, 4]
+
+        // offer(), poll() and peek() are the preferred methods as they do not throw exceptions (P.O.P.)
     }
 }
