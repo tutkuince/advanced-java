@@ -51,7 +51,14 @@
   - Exceptions are priority queues ( order is natural ordering or according to a supplied comparator) and LIFO (Last In First Out) queues (stacks).
   - <i>LinkedList</i>
     - as <i>LinkedList</i> implements <i>Queue</i>; basic queues can be handled with a <i>LinkedList</i>
-  - <i>PriorityQueue</i>
-    - <i>PriorityQueue</i> orders the elements relative to each other such that "priority-in, priority-out" (as opposed to a FIFO or LIFO)
-    - the elements are either ordered by natural order or by a custom order via a comparator.
-    - elements that are sorted first will be accessed first.
+    - <i>PriorityQueue</i>
+      - <i>PriorityQueue</i> orders the elements relative to each other such that "priority-in, priority-out" (as opposed to a FIFO or LIFO)
+      - the elements are either ordered by natural order or by a custom order via a comparator.
+      - elements that are sorted first will be accessed first.
+- <b>Deque</b>
+  - deque ("double ended queue")
+  - access from both ends permitted
+  - can be used as both FIFO (queue) and LIFO (stack).
+  - <i>ArrayDeque</i>
+    - expandable-array implementation of the <i>Deque</i> interface (no capacity restrictions)
+    - API: "likely to be faster than <i>Stack</i> when used as a stack, and faster than <i>LinkedList</i> when used as a queue".
