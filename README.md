@@ -46,6 +46,11 @@
 ![image](https://github.com/tutkuince/advanced-java/assets/33215575/51ff6fac-f016-4bb6-8f8f-aa7f67ecb9df)
 ![image](https://github.com/tutkuince/advanced-java/assets/33215575/53374270-86d3-456e-b8f3-75a87e87421a)
 
+- <b>Queue</b>: a collection that specifies the order in which elements are to be processed.
+  - Typically the order is FIFO (First In First Out).
+  - Exceptions are priority queues ( order is natural ordering or according to a supplied comparator) and LIFO (Last In First Out) queues (stacks).
+  - LinkedList
+    - as <i>LinkedList</i> implements <i>Queue</i>; basic queues can be handled with a <i>LinkedList</i>
 
 
   
