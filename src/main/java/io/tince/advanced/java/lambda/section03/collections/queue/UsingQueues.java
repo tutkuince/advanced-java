@@ -1,14 +1,52 @@
 package io.tince.advanced.java.lambda.section03.collections.queue;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 public class UsingQueues {
     public static void main(String[] args) {
         linkedListQueue();
         priorityQueueNaturalOrdering();
+        priorityQueueDifferentOrdering();
+    }
+
+    private static void priorityQueueDifferentOrdering() {
+        // Ordering specified by a comparator at construction time
+        // 1. Order by the title of the book
+        // Comparator.comparing(Function)
+        // API: "Accept a function that extracts a Comparable sort key from a type T, and returns a Comparator<T> that compares by that sort key."
+        // Function<T, R>
+        // R apply(T t)
+        orderByBookTitle();
+        orderByBookPrice();
+    }
+
+    private static void orderByBookTitle() {
+        Comparator<Book> comparatorTitle = Comparator.comparing(Book::getTitle);
+        Queue<Book> booksByTitle = new PriorityQueue<>(comparatorTitle);   // Order by Title
+        booksByTitle.add(new Book("Java", 55.00));
+        booksByTitle.add(new Book("C++", 85.00));
+        booksByTitle.add(new Book("Python", 25.00));
+        System.out.println("\nOrdering Books by Title");
+        Iterator<Book> bookIterator = booksByTitle.iterator();
+        while (bookIterator.hasNext()) {
+            Book book = booksByTitle.poll();
+            System.out.println(book);           // Book{title='Python', price=25.0} Book{title='Java', price=55.0} Book{title='C++', price=85.0}
+        }
+    }
+
+    private static void orderByBookPrice() {
+        Comparator<Book> comparatorPrice = Comparator.comparing(Book::getPrice);
+        Queue<Book> booksByPrice = new PriorityQueue<>(comparatorPrice);    // Order by Price
+        booksByPrice.add(new Book("Java", 55.00));
+        booksByPrice.add(new Book("C++", 85.00));
+        booksByPrice.add(new Book("Python", 25.00));
+
+        System.out.println("Ordering Books by Price");
+        Iterator<Book> bookIterator = booksByPrice.iterator();
+        while (bookIterator.hasNext()) {
+            Book book = booksByPrice.poll();
+            System.out.println(book);           //
+        }
     }
 
     private static void priorityQueueNaturalOrdering() {
