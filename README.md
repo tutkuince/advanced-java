@@ -65,6 +65,9 @@
 ![image](https://github.com/tutkuince/advanced-java/assets/33215575/ee6fd5c8-3e72-4785-a3e1-c366d33b7fa7)
 ![image](https://github.com/tutkuince/advanced-java/assets/33215575/a4a57519-776e-4a62-b08e-1e07a5e4d463)
 ![image](https://github.com/tutkuince/advanced-java/assets/33215575/1c116a2e-1a99-48e8-af9e-e71e7af61e04)
-
-
+### Sorting
+- Both collections and arrays can be sorted and searched using methods in the API
+- The <i>Collections</i> class is a utility class i.e. a class which consist exclusively of static methods, used for operating on collections.
+- The <i>Arrays</i> class is a also a utility class, the <i>Arrays</i> class however, operates on native array only ([] styntax).
+- One can convert an array (of reference types) to a <i>List</i> using the <i>Arrays.asList</i> method. The returned <i>List</i> can then be passed to useful methods that exist in the <i>Collections</i> class.
 
