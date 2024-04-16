@@ -65,6 +65,33 @@
 ![image](https://github.com/tutkuince/advanced-java/assets/33215575/ee6fd5c8-3e72-4785-a3e1-c366d33b7fa7)
 ![image](https://github.com/tutkuince/advanced-java/assets/33215575/a4a57519-776e-4a62-b08e-1e07a5e4d463)
 ![image](https://github.com/tutkuince/advanced-java/assets/33215575/1c116a2e-1a99-48e8-af9e-e71e7af61e04)
-
-
-
+### Sorting
+- Both collections and arrays can be sorted and searched using methods in the API
+- The <i>Collections</i> class is a utility class i.e. a class which consist exclusively of static methods, used for operating on collections.
+- The <i>Arrays</i> class is a also a utility class, the <i>Arrays</i> class however, operates on native array only ([] styntax).
+- One can convert an array (of reference types) to a <i>List</i> using the <i>Arrays.asList</i> method. The returned <i>List</i> can then be passed to useful methods that exist in the <i>Collections</i> class.
+#### <i>Comparable</i> and <i>Comparator</i> Interfaces
+- The <i>Comparable<T></i> and <i>Comparator<T></i> interfaces are used for comparing objects of similar type.
+- Both are functional interfaces.
+- Sorting is a classic example where they are used.
+- <i>java.lang.</i>Comparable and <i>java.util.</i>.Comparator
+- Note: if you add an object of a class to e.g. <i>TreeSet</i> and the class does NOT implement <i>Comparable</i>, you will get a <i>ClassCastException</i>
+##### Comparable Interface
+- compareTo logic: return an <i>int</i> value based on the following:
+  - return a positive number if the current object is larger than the object passed in
+  - return 0 if the current object is equivalent to the object passed in
+  - return a negative number if the current object is smaller than the object passed in
+- This logic can be delegated to existing types (<i>String</i>, <i>Integer</i>) that already have implemented <i>Comparable</i>. In other words, if you are comparing <i>Integer's</i> you can delegate.
+- <i>Comparable</i> - compareTo() and equals() consistency.
+  - When are 2 objects equal?
+    - compareTo() -> returns 0
+    - equals()    -> return <i>true</i>
+  - API: "The natural ordering for a class "C" is said to be <i>consistent with equals</i> if and only if e1.compareTo(e2) == 0 has the same boolean value as e1.equals(e2) for every e1 and e2 of class "C"
+  - We are "strongly recommened" to keep our <i>Comparable</i> classes consistent with equals because "sorted sets (or sorted maps)... behave strangely" otherwise.
+##### Comparator Interface
+- What if the objects we wanted to sort did not implement <i>Comparable</i> or if we wanted to sort in several different ways? Answer: <i>Comparator</i>
+- <i>Comparator</i> is also a functional interface:
+  - int compare(T o1, T o2)
+- The logic internally is the same as for <i>compareTo()</i>
+- Typically, this is coded externally to the class whose objects we are comparing so we need to compare 2 objects.
+  - as <i>Comparable</i> is coded internally to the class, we just need the one/other object we want to compare to <i>"this"</i> object.
