@@ -74,5 +74,5 @@
 - The <i>Comparable<T></i> and <i>Comparator<T></i> interfaces are used for comparing objects of similar type.
 - Both are functional interfaces.
 - Sorting is a classic example where they are used.
-- <u>java.lang.</u>Comparable and <u>java.util.</u>.Comparator
+- <i>java.lang.</i>Comparable and <i>java.util.</i>.Comparator
 - Note: if you add an object of a class to e.g. <i>TreeSet</i> and the class does NOT implement <i>Comparable</i>, you will get a <i>ClassCastException</i>
