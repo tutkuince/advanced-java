@@ -76,3 +76,9 @@
 - Sorting is a classic example where they are used.
 - <i>java.lang.</i>Comparable and <i>java.util.</i>.Comparator
 - Note: if you add an object of a class to e.g. <i>TreeSet</i> and the class does NOT implement <i>Comparable</i>, you will get a <i>ClassCastException</i>
+##### Comparable Interface
+- compareTo logic: return an <i>int</i> value based on the following:
+  - return a positive number if the current object is larger than the object passed in
+  - return 0 if the current object is equivalent to the object passed in
+  - return a negative number if the current object is smaller than the object passed in
+- This logic can be delegated to existing types (<i>String</i>, <i>Integer</i>) that already have implemented <i>Comparable</i>. In other words, if you are comparing <i>Integer's</i> you can delegate.
