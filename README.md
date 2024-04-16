@@ -70,4 +70,9 @@
 - The <i>Collections</i> class is a utility class i.e. a class which consist exclusively of static methods, used for operating on collections.
 - The <i>Arrays</i> class is a also a utility class, the <i>Arrays</i> class however, operates on native array only ([] styntax).
 - One can convert an array (of reference types) to a <i>List</i> using the <i>Arrays.asList</i> method. The returned <i>List</i> can then be passed to useful methods that exist in the <i>Collections</i> class.
-
+#### <i>Comparable</i> and <i>Comparator</i> Interfaces
+- The <i>Comparable<T></i> and <i>Comparator<T></i> interfaces are used for comparing objects of similar type.
+- Both are functional interfaces.
+- Sorting is a classic example where they are used.
+- <u><i>java.lang.</i></u>Comparable and <u><i>java.util.</i></u>.Comparator
+- Note: if you add an object of a class to e.g. <i>TreeSet</i> and the class does NOT implement <i>Comparable</i>, you will get a <i>ClassCastException</i>
