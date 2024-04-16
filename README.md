@@ -82,3 +82,16 @@
   - return 0 if the current object is equivalent to the object passed in
   - return a negative number if the current object is smaller than the object passed in
 - This logic can be delegated to existing types (<i>String</i>, <i>Integer</i>) that already have implemented <i>Comparable</i>. In other words, if you are comparing <i>Integer's</i> you can delegate.
+- <i>Comparable</i> - compareTo() and equals() consistency.
+  - When are 2 objects equal?
+    - compareTo() -> returns 0
+    - equals()    -> return <i>true</i>
+  - API: "The natural ordering for a class "C" is said to be <i>consistent with equals</i> if and only if e1.compareTo(e2) == 0 has the same boolean value as e1.equals(e2) for every e1 and e2 of class "C"
+  - We are "strongly recommened" to keep our <i>Comparable</i> classes consistent with equals because "sorted sets (or sorted maps)... behave strangely" otherwise.
+##### Comparator Interface
+- What if the objects we wanted to sort did not implement <i>Comparable</i> or if we wanted to sort in several different ways? Answer: <i>Comparator</i>
+- <i>Comparator</i> is also a functional interface:
+  - int compare(T o1, T o2)
+- The logic internally is the same as for <i>compareTo()</i>
+- Typically, this is coded externally to the class whose objects we are comparing so we need to compare 2 objects.
+  - as <i>Comparable</i> is coded internally to the class, we just need the one/other object we want to compare to <i>"this"</i> object.
