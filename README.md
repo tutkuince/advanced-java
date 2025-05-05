@@ -201,6 +201,55 @@ List<Integer> nameLengths = names.stream()
 
 System.out.println(nameLengths); // [3, 4, 4]
 ```
+### UnaryOperator and BinaryOperator
+In Java, UnaryOperator and BinaryOperator are specialized versions of the Function and BiFunction interfaces, designed for operations where input and output types are the same.
+
+They make the code more semantic and readable when you're working with such operations.
+
+#### UnaryOperator<T>
+A specialization of Function<T, T>.
+It takes one argument and returns a result of the same type.
+
+```
+@FunctionalInterface
+public interface UnaryOperator<T> extends Function<T, T> { }
+```
+Example
+```
+UnaryOperator<String> toUpper = s -> s.toUpperCase();
+
+System.out.println(toUpper.apply("tutku"));  // Output: TUTKU
+```
+
+#### BinaryOperator<T>
+A specialization of BiFunction<T, T, T>.
+It takes two arguments of the same type and returns a result of the same type.
+
+```
+@FunctionalInterface
+public interface BinaryOperator<T> extends BiFunction<T, T, T> { }
+```
+Example:
+
+```
+BinaryOperator<Integer> sum = (a, b) -> a + b;
+
+System.out.println(sum.apply(10, 5));  // Output: 15
+```
+
+| Interface           | General Version       | Purpose                                     |
+| ------------------- | --------------------- | ------------------------------------------- |
+| `UnaryOperator<T>`  | `Function<T, T>`      | Modify a value (e.g., trim, upper-case)     |
+| `BinaryOperator<T>` | `BiFunction<T, T, T>` | Combine two values (e.g., add, max, concat) |
+
+Real-World Example: Using BinaryOperator with reduce()
+```
+List<Integer> numbers = List.of(2, 4, 6);
+BinaryOperator<Integer> sum = Integer::sum;
+
+int result = numbers.stream().reduce(0, sum);
+System.out.println(result);  // Output: 12
+```
 
 ## Section - 2 Streams
 ## Section - 3 Collections and Generics
