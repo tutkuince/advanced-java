@@ -105,6 +105,51 @@ Supplier<Integer> randomSupplier = () -> new Random().nextInt(100);
 System.out.println(randomSupplier.get()); // Might print 42, 7, etc.
 ```
 
+### Consumer and BiConsumer
+In Java, Consumer and BiConsumer are functional interfaces from the java.util.function package. They represent operations that accept input but return no result — they are typically used to perform actions, such as printing or saving data.
+
+#### Consumer<T>
+Represents an operation that takes a single argument and returns no result.
+
+```
+@FunctionalInterface
+public interface Consumer<T> {
+    void accept(T t);
+}
+```
+```
+List<String> names = List.of("Ali", "Ayşe", "Veli");
+names.forEach(greeter); // Calls accept() for each item
+```
+
+#### BiConsumer<T, U>
+Represents an operation that takes two input arguments and returns no result.
+
+```
+@FunctionalInterface
+public interface BiConsumer<T, U> {
+    void accept(T t, U u);
+}
+```
+```
+BiConsumer<String, Integer> printAge = (name, age) ->
+    System.out.println(name + " is " + age + " years old");
+
+printAge.accept("Tutku", 30);  // Output: Tutku is 30 years old
+```
+```
+Map<String, Integer> ages = Map.of("Ali", 25, "Ayşe", 28);
+ages.forEach((name, age) -> System.out.println(name + ": " + age));
+
+```
+
+Common Use Cases
+| Use Case                     | Interface    | Example                |
+| ---------------------------- | ------------ | ---------------------- |
+| Print/log a value            | `Consumer`   | `System.out::println`  |
+| Apply an operation to a list | `Consumer`   | `list.forEach(...)`    |
+| Operate on key-value pairs   | `BiConsumer` | Iterating over a `Map` |
+
 ## Section - 2 Streams
 ## Section - 3 Collections and Generics
 - Working with generics, including wildcards
