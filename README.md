@@ -150,6 +150,58 @@ Common Use Cases
 | Apply an operation to a list | `Consumer`   | `list.forEach(...)`    |
 | Operate on key-value pairs   | `BiConsumer` | Iterating over a `Map` |
 
+### Function and BiFunction
+In Java, Function and BiFunction are functional interfaces from the java.util.function package. They are used when you need to take input(s) and return a result — unlike Consumer, which returns nothing.
+
+#### Function<T, R>
+Represents a function that:
+- Takes one argument of type T
+- Returns a result of type R
+```
+@FunctionalInterface
+public interface Function<T, R> {
+    R apply(T t);
+}
+```
+```
+Function<String, Integer> stringLength = s -> s.length();
+
+System.out.println(stringLength.apply("Tutku"));  // Output: 5
+```
+#### BiFunction<T, U, R>
+Represents a function that: 
+- Takes two argument of types T and U
+- Returns a result of type R
+```
+@FunctionalInterface
+public interface BiFunction<T, U, R> {
+    R apply(T t, U u);
+}
+```
+```
+BiFunction<Integer, Integer, String> sumToString = (a, b) -> "Sum: " + (a + b);
+
+System.out.println(sumToString.apply(5, 3)); // Output: Sum: 8
+```
+
+Common Use Cases
+
+| Use Case                      | Interface    | Example                               |
+| ----------------------------- | ------------ | ------------------------------------- |
+| Convert data (String → int)   | `Function`   | `String::length`, `Integer::parseInt` |
+| Combine two values and return | `BiFunction` | Add, multiply, format, etc.           |
+| Map transformation in streams | `Function`   | `list.stream().map(...).collect(...)` |
+
+Example: Function with Stream API
+```
+List<String> names = List.of("Ali", "Ayşe", "Veli");
+List<Integer> nameLengths = names.stream()
+                                 .map(name -> name.length())
+                                 .collect(Collectors.toList());
+
+System.out.println(nameLengths); // [3, 4, 4]
+```
+
 ## Section - 2 Streams
 ## Section - 3 Collections and Generics
 - Working with generics, including wildcards
