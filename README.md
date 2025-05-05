@@ -89,6 +89,21 @@ Useful Methods (both have):
 - or(): Combines with logical OR.
 - negate(): Logical NOT.
 
+### Supplier<T>
+The Supplier<T> functional interface in Java (from java.util.function) represents a function that supplies a value without taking any input.
+
+- It returns a value of type T.
+- It does not accept any arguments.
+- Typically used for lazy generation or factory-like behavior.
+
+```
+import java.util.function.Supplier;
+import java.util.Random;
+
+Supplier<Integer> randomSupplier = () -> new Random().nextInt(100);
+
+System.out.println(randomSupplier.get()); // Might print 42, 7, etc.
+```
 
 ## Section - 2 Streams
 ## Section - 3 Collections and Generics
