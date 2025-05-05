@@ -251,6 +251,44 @@ int result = numbers.stream().reduce(0, sum);
 System.out.println(result);  // Output: 12
 ```
 
+### final and effectively  final
+
+#### final in Java
+A variable declared with the final keyword cannot be reassigned after it's initialized.
+```
+final int x = 10;
+x = 20;  // ❌ Compilation error
+```
+This ensures that the value of x remains constant after assignment.
+
+#### Effectively Final
+A variable is effectively final if you don't reassign it, even though it’s not explicitly marked as final.
+```
+int x = 10;  // Not declared final
+// No reassignment afterwards → effectively final
+
+Runnable r = () -> System.out.println(x);  // ✅ OK
+```
+This works because x is never changed, so the compiler treates it as if it were final.
+
+However:
+```
+int x = 10;
+x = 15;  // 🔁 reassigned → NOT effectively final
+
+Runnable r = () -> System.out.println(x);  // ❌ Compilation error
+```
+
+***Why Does This Matter?***
+Java requires captured variables in lambdas or anonymous inner classes to be final or effectively final. 
+This avoids issues with variable mutability in closures.
+
+| Term              | Reassignable? | Required for Lambdas? | Explicit Keyword? |
+| ----------------- | ------------- | --------------------- | ----------------- |
+| `final`           | ❌ No          | ✅ Yes                 | ✅ Yes             |
+| Effectively final | ❌ No          | ✅ Yes                 | ❌ No              |
+
+
 ## Section - 2 Streams
 ## Section - 3 Collections and Generics
 - Working with generics, including wildcards
