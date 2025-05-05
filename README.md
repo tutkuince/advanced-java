@@ -63,6 +63,33 @@ Greeting greet = (name) -> System.out.println("Hello, " + name);
 greet.sayHello("Tutku");
 ```
 
+### Predicate and BiPredicate
+In Java, Predicate and BiPredicate are functional interfaces in the java.util.function package. They are used primarily for evaluating boolean conditions (i.e., true/false decisions), and they are often used with the Stream API, filtering, and conditional logic.
+
+#### Predicate<T>
+Represents a single-argument function that returns a boolean value.
+
+```
+@FunctionalInterface
+public interface Predicate<T> {
+    boolean test(T t);
+}
+```
+#### BiPredicate<T, U>
+Represents a two-argument version of Predicate, also returning a boolean.
+
+```
+@FunctionalInterface
+public interface BiPredicate<T, U> {
+    boolean test(T t, U u);
+}
+```
+Useful Methods (both have):
+- and(): Combines predicates with logical AND.
+- or(): Combines with logical OR.
+- negate(): Logical NOT.
+
+
 ## Section - 2 Streams
 ## Section - 3 Collections and Generics
 - Working with generics, including wildcards
