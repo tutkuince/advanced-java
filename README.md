@@ -1,5 +1,68 @@
 # Java 21, Java 17, Java 11 and Advanced Java 8
 ## Section - 1 Lambda Expressions
+Java Lambda Expressions are a feature introduced in Java 8 that allow you to write anonymous functions—functions without a name—using a concise syntax. They are primarily used to implement functional interfaces, i.e., interfaces with a single abstract method (SAM).
+A lambda expression is an instance of a class that implements a functional interface.
+
+### Why Use Lambdas?
+- More concise: Reduces boilerplate code.
+- Readability: Improves clarity, especially in functional-style operations (like map, filter, reduce).
+- Used heavily in streams and functional programming.
+
+### Interfaces 
+Since Java 8, interfaces in Java can contain two types of concrete (non-abstract) methods:
+#### 1. Default Methods
+- Introduced in Java 8.
+- Declared with the default keyword.
+- Allow interfaces to have method implementations without breaking existing implementations.
+- Can be inherited by implementing classes and overridden if needed.
+```
+interface Animal {
+    default void sound() {
+        System.out.println("Some animal sound");
+    }
+}
+
+class Dog implements Animal {
+    // Inherits 'sound' by default, can override if needed
+}
+```
+#### 2. Static Methods
+- Also introduced in Java 8.
+- Declared with the static keyword.
+- Belong to the interface itself, not inherited by implementing classes.
+- Called using the interface name, not through an object.
+```
+interface MathUtils {
+    static int add(int a, int b) {
+        return a + b;
+    }
+}
+
+// Usage:
+int result = MathUtils.add(3, 5);
+```
+### Functional Interfaces
+A functional interface in Java is an interface that contains exactly ***one abstract*** method. It can have any number of default, static, or private methods, but only one abstract method qualifies it as functional. <br/>
+Functional interfaces are the backbone of lambda expressions and method references, introduced in Java 8. <br/>
+- default methods do not count
+- static methods do not count
+- methods inherited from Object do not count
+
+***Key Features:***
+- Marked with the @FunctionalInterface annotation (optional but recommended).
+- Can be implemented using a lambda expression or a method reference.
+- Enables functional programming in Java.
+```
+@FunctionalInterface
+interface Greeting {
+    void sayHello(String name);
+}
+
+// Lambda usage
+Greeting greet = (name) -> System.out.println("Hello, " + name);
+greet.sayHello("Tutku");
+```
+
 ## Section - 2 Streams
 ## Section - 3 Collections and Generics
 - Working with generics, including wildcards
