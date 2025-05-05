@@ -105,6 +105,103 @@ Supplier<Integer> randomSupplier = () -> new Random().nextInt(100);
 System.out.println(randomSupplier.get()); // Might print 42, 7, etc.
 ```
 
+### Consumer and BiConsumer
+In Java, Consumer and BiConsumer are functional interfaces from the java.util.function package. They represent operations that accept input but return no result — they are typically used to perform actions, such as printing or saving data.
+
+#### Consumer<T>
+Represents an operation that takes a single argument and returns no result.
+
+```
+@FunctionalInterface
+public interface Consumer<T> {
+    void accept(T t);
+}
+```
+```
+List<String> names = List.of("Ali", "Ayşe", "Veli");
+names.forEach(greeter); // Calls accept() for each item
+```
+
+#### BiConsumer<T, U>
+Represents an operation that takes two input arguments and returns no result.
+
+```
+@FunctionalInterface
+public interface BiConsumer<T, U> {
+    void accept(T t, U u);
+}
+```
+```
+BiConsumer<String, Integer> printAge = (name, age) ->
+    System.out.println(name + " is " + age + " years old");
+
+printAge.accept("Tutku", 30);  // Output: Tutku is 30 years old
+```
+```
+Map<String, Integer> ages = Map.of("Ali", 25, "Ayşe", 28);
+ages.forEach((name, age) -> System.out.println(name + ": " + age));
+
+```
+
+Common Use Cases
+| Use Case                     | Interface    | Example                |
+| ---------------------------- | ------------ | ---------------------- |
+| Print/log a value            | `Consumer`   | `System.out::println`  |
+| Apply an operation to a list | `Consumer`   | `list.forEach(...)`    |
+| Operate on key-value pairs   | `BiConsumer` | Iterating over a `Map` |
+
+### Function and BiFunction
+In Java, Function and BiFunction are functional interfaces from the java.util.function package. They are used when you need to take input(s) and return a result — unlike Consumer, which returns nothing.
+
+#### Function<T, R>
+Represents a function that:
+- Takes one argument of type T
+- Returns a result of type R
+```
+@FunctionalInterface
+public interface Function<T, R> {
+    R apply(T t);
+}
+```
+```
+Function<String, Integer> stringLength = s -> s.length();
+
+System.out.println(stringLength.apply("Tutku"));  // Output: 5
+```
+#### BiFunction<T, U, R>
+Represents a function that: 
+- Takes two argument of types T and U
+- Returns a result of type R
+```
+@FunctionalInterface
+public interface BiFunction<T, U, R> {
+    R apply(T t, U u);
+}
+```
+```
+BiFunction<Integer, Integer, String> sumToString = (a, b) -> "Sum: " + (a + b);
+
+System.out.println(sumToString.apply(5, 3)); // Output: Sum: 8
+```
+
+Common Use Cases
+
+| Use Case                      | Interface    | Example                               |
+| ----------------------------- | ------------ | ------------------------------------- |
+| Convert data (String → int)   | `Function`   | `String::length`, `Integer::parseInt` |
+| Combine two values and return | `BiFunction` | Add, multiply, format, etc.           |
+| Map transformation in streams | `Function`   | `list.stream().map(...).collect(...)` |
+
+Example: Function with Stream API
+```
+List<String> names = List.of("Ali", "Ayşe", "Veli");
+List<Integer> nameLengths = names.stream()
+                                 .map(name -> name.length())
+                                 .collect(Collectors.toList());
+
+System.out.println(nameLengths); // [3, 4, 4]
+```
+
 ## Section - 2 Streams
 ## Section - 3 Collections and Generics
 - Working with generics, including wildcards
