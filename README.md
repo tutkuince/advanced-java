@@ -290,6 +290,57 @@ This avoids issues with variable mutability in closures.
 
 
 ## Section - 2 Streams
+In Java, a Stream is a sequence of elements that supports functional-style operations to process data. 
+
+Introduced in Java 8, the Stream API lets you work with collections in a declarative, expressive, and concise way, similar to SQL or functional programming.
+
+### Key Characteristics of Streams
+- Not a data structure — it doesn’t store data.
+- Lazy — operations are only executed when a terminal operation is called.
+- Can be sequential or parallel.
+- Doesn’t modify the source (e.g., the original list remains unchanged).
+
+### Common Stream Operations
+Streams are typically chained using a pipeline of methods:
+1. Source
+```
+List<String> names = List.of("Ali", "Ayşe", "Veli");
+Stream<String> stream = names.stream();
+```
+2. Intermediate operations (lazy)
+
+| Operation            | Purpose                            |
+| -------------------- | ---------------------------------- |
+| `filter()`           | Select elements based on condition |
+| `map()`              | Transform each element             |
+| `sorted()`           | Sort the stream                    |
+| `distinct()`         | Remove duplicates                  |
+| `limit()` / `skip()` | Limit/skip items                   |
+
+3. Terminal operations (trigger execution)
+
+These produce a result or side-effect.
+
+| Operation                   | Result Type        |
+| --------------------------- | ------------------ |
+| `forEach()`                 | void (side-effect) |
+| `collect()`                 | Collection         |
+| `reduce()`                  | Single value       |
+| `count()`                   | long               |
+| `anyMatch()` / `allMatch()` | boolean            |
+
+
+### Streams vs Collections
+
+| Feature               | Collections    | Streams                          |
+| --------------------- | -------------- | -------------------------------- |
+| Stores data?          | ✅ Yes          | ❌ No (views over data)           |
+| Traversal             | Multiple times | Usually once                     |
+| Lazy evaluation       | ❌ No           | ✅ Yes                            |
+| Can be infinite       | ❌ No           | ✅ Yes (e.g., `Stream.iterate()`) |
+| Supports parallel ops | ✅ (manual)     | ✅ (easy via `.parallel()`)       |
+
+
 ## Section - 3 Collections and Generics
 - Working with generics, including wildcards
 - Use a Java array and List, Set, Map and Deque collections, including convenience methods
