@@ -308,6 +308,7 @@ List<String> names = List.of("Ali", "Ayşe", "Veli");
 Stream<String> stream = names.stream();
 ```
 2. Intermediate operations (lazy)
+
 | Operation            | Purpose                            |
 | -------------------- | ---------------------------------- |
 | `filter()`           | Select elements based on condition |
@@ -317,7 +318,9 @@ Stream<String> stream = names.stream();
 | `limit()` / `skip()` | Limit/skip items                   |
 
 3. Terminal operations (trigger execution)
+
 These produce a result or side-effect.
+
 | Operation                   | Result Type        |
 | --------------------------- | ------------------ |
 | `forEach()`                 | void (side-effect) |
@@ -328,6 +331,7 @@ These produce a result or side-effect.
 
 
 ### Streams vs Collections
+
 | Feature               | Collections    | Streams                          |
 | --------------------- | -------------- | -------------------------------- |
 | Stores data?          | ✅ Yes          | ❌ No (views over data)           |
