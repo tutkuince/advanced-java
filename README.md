@@ -313,6 +313,7 @@ Stream<String> stream = names.stream();
 | -------------------- | ---------------------------------- |
 | `filter()`           | Select elements based on condition |
 | `map()`              | Transform each element             |
+| `flatMap()`          | Transforms and flattens nested structures             |
 | `sorted()`           | Sort the stream                    |
 | `distinct()`         | Remove duplicates                  |
 | `limit()` / `skip()` | Limit/skip items                   |
@@ -340,6 +341,33 @@ These produce a result or side-effect.
 | Can be infinite       | ❌ No           | ✅ Yes (e.g., `Stream.iterate()`) |
 | Supports parallel ops | ✅ (manual)     | ✅ (easy via `.parallel()`)       |
 
+### Streams are Lazy
+- The princeple of "lazy" evaluation is that you get what you need only when you need it.
+- Streams in Java are lazy, meaning that intermediate operations like map(), filter(), or sorted() are not executed immediately.
+- Instead, they are deferred until a terminal operation is invoked, such as collect(), forEach(), count(), etc.
+- Java builds a pipeline of operations but only starts processing data when it knows what to do with the results — this is efficient and avoids unnecessary computation.
+
+For example, if you were displaying 10,000 records to a user, the princeple of lazy evaluation would be to retrieve 50 and while the user is viewing these, retrieve another 50 in the background.
+
+-"Eager" evalutation would be to retrieve all 10,000 recods in one go.
+- With regard to streams, this means that nothing happens until the terminal operation occurs.
+
+### Why Is Laziness Useful?
+- Improves performance by avoiding unnecessary computations.
+- Enables short-circuiting — like in findFirst(), anyMatch().
+
+### What is .peek() in Java Streams?
+The .peek() method in Java Streams is an intermediate operation used mainly for debugging or observing the elements as they pass through the stream pipeline.
+
+Syntax
+```
+Stream<T> peek(Consumer<? super T> action)
+```
+- It takes a Consumer (like System.out::println) and applies it to each element.
+- It does not modify the stream elements.
+- It’s lazy — it only executes when a terminal operation (like collect(), forEach(), etc.) is present.
+- peek() is not meant for modifying elements. Use map() for transformation.
+- It doesn’t do anything unless followed by a terminal operation.
 
 ## Section - 3 Collections and Generics
 - Working with generics, including wildcards
