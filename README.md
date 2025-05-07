@@ -376,6 +376,74 @@ Stream<T> peek(Consumer<? super T> action)
 - peek() is not meant for modifying elements. Use map() for transformation.
 - It doesn’t do anything unless followed by a terminal operation.
 
+ ### What is .collect() in Java Streams?
+ The .collect() method is a terminal operation in Java Streams that transforms the elements of a stream into a different form, typically a collection like a List, Set, or Map.
+ 
+It works together with the Collectors ***utility*** class, which provides various predefined collectors.
+
+Basic syntax:
+```
+stream.collect(Collector<T, A, R>)
+```
+
+Where: 
+- T is the stream element type,
+- A is the intermediate accumulation type,
+- R is the final result type (e.g. List, Set, Map, etc).
+
+### Collectors.toMap()
+This collector converts a stream into a Map. You need to provide:
+- A key mapper function
+- A value mapper function
+- (Optionally) a merge function if duplicate keys may occur
+
+```
+List<String> names = List.of("Ali", "Ayşe", "Veli");
+
+Map<String, Integer> nameLengthMap = names.stream()
+    .collect(Collectors.toMap(
+        name -> name,          // key: the name itself
+        name -> name.length()  // value: length of the name
+    ));
+
+System.out.println(nameLengthMap); 
+// Output: {Ali=3, Ayşe=4, Veli=4}
+```
+
+Important: If duplicate keys are possible, you must supply a merge function:
+```
+Collectors.toMap(
+    keyMapper,
+    valueMapper,
+    (existing, replacement) -> existing  // or custom merge logic
+)
+```
+
+### Collectors.groupingBy()
+This collector is used to group stream elements by a classifier function, resulting in a Map<K, List<T>> where:
+- K is the key (grouping criterion),
+- List<T> is the list of elements belonging to that group.
+
+Example:
+```
+List<String> names = List.of("Ali", "Ayşe", "Veli", "Zeynep");
+
+Map<Integer, List<String>> groupedByLength = names.stream()
+    .collect(Collectors.groupingBy(String::length));
+
+System.out.println(groupedByLength);
+// Output: {3=[Ali], 4=[Ayşe, Veli], 6=[Zeynep]}
+```
+
+Advanced usage:
+```
+Map<Integer, Set<String>> groupedAsSet = names.stream()
+    .collect(Collectors.groupingBy(
+        String::length,
+        Collectors.toSet()
+    ));
+```
+
 ## Section - 3 Collections and Generics
 - Working with generics, including wildcards
 - Use a Java array and List, Set, Map and Deque collections, including convenience methods
