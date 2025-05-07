@@ -322,14 +322,21 @@ Stream<String> stream = names.stream();
 
 These produce a result or side-effect.
 
-| Operation                   | Result Type        |
-| --------------------------- | ------------------ |
-| `forEach()`                 | void (side-effect) |
-| `collect()`                 | Collection         |
-| `reduce()`                  | Single value       |
-| `count()`                   | long               |
-| `anyMatch()` / `allMatch()` | boolean            |
+| Operation         | Return Type          | Purpose / Description                                                         |
+| ----------------- | -------------------- | ----------------------------------------------------------------------------- |
+| `collect()`       | Depends on collector | Collects stream elements into a collection (e.g., `List`, `Set`, `Map`, etc.) |
+| `forEach()`       | `void`               | Applies an action to each element (e.g., printing)                            |
+| `toArray()`       | `Object[]` or `T[]`  | Converts the stream to an array                                               |
+| `reduce()`        | Optional / value     | Combines elements into a single result (e.g., sum, product, concatenation)    |
+| `count()`         | `long`               | Counts the number of elements in the stream                                   |
+| `min()` / `max()` | `Optional<T>`        | Finds the minimum or maximum element using a comparator                       |
+| `anyMatch()`      | `boolean`            | Returns true if **any** element matches a given predicate                     |
+| `allMatch()`      | `boolean`            | Returns true if **all** elements match a given predicate                      |
+| `noneMatch()`     | `boolean`            | Returns true if **no** elements match a given predicate                       |
+| `findFirst()`     | `Optional<T>`        | Returns the **first** element in the stream (useful in ordered streams)       |
+| `findAny()`       | `Optional<T>`        | Returns **any** element (may be more performant, esp. in parallel streams)    |
 
+Reductions are a special type of terminal operation where ALL of the contents of the stream are combined into a single primiteve or Object e.g. long or Collection
 
 ### Streams vs Collections
 
