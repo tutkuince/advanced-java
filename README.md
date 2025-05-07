@@ -356,7 +356,7 @@ Reductions are a special type of terminal operation where ALL of the contents of
 
 For example, if you were displaying 10,000 records to a user, the princeple of lazy evaluation would be to retrieve 50 and while the user is viewing these, retrieve another 50 in the background.
 
--"Eager" evalutation would be to retrieve all 10,000 recods in one go.
+- "Eager" evalutation would be to retrieve all 10,000 recods in one go.
 - With regard to streams, this means that nothing happens until the terminal operation occurs.
 
 ### Why Is Laziness Useful?
@@ -443,6 +443,60 @@ Map<Integer, Set<String>> groupedAsSet = names.stream()
         Collectors.toSet()
     ));
 ```
+### What is Collectors.partitioningBy()?
+partitioningBy() splits the stream’s elements into two groups based on a boolean condition (i.e., a predicate). The result is a Map<Boolean, List<T>>:
+- One list for elements where the predicate returns true
+- One list for elements where it returns false
+
+Syntax: 
+
+```
+Collectors.partitioningBy(Predicate<T> predicate)
+```
+
+You can also pass a downstream collector to customize the result:
+
+```
+Collectors.partitioningBy(Predicate<T> predicate, Collector<T, ?, D> downstream)
+```
+
+🧪 Example 1: Partitioning even and odd numbers:
+```
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class PartitioningExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+
+        Map<Boolean, List<Integer>> partitioned = numbers.stream()
+            .collect(Collectors.partitioningBy(n -> n % 2 == 0));
+
+        System.out.println("Even numbers: " + partitioned.get(true));    // [2, 4, 6]
+        System.out.println("Odd numbers: " + partitioned.get(false));    // [1, 3, 5]
+    }
+}
+```
+
+🧪 Example 2: Partitioning with a downstream collector
+```
+Map<Boolean, Long> countByParity = numbers.stream()
+    .collect(Collectors.partitioningBy(
+        n -> n % 2 == 0,
+        Collectors.counting()
+    ));
+
+System.out.println(countByParity); // {false=3, true=3}
+```
+
+### ⚖️ Difference vs groupingBy()
+| Feature  | `partitioningBy()`     | `groupingBy()`         |
+| -------- | ---------------------- | ---------------------- |
+| Groups   | Exactly 2 (true/false) | Any number of groups   |
+| Key type | `Boolean`              | Any object type        |
+| Use case | Binary classification  | General classification |
+
+
 
 ## Section - 3 Collections and Generics
 - Working with generics, including wildcards
