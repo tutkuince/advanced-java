@@ -499,6 +499,41 @@ System.out.println(countByParity); // {false=3, true=3}
 | Key type | `Boolean`              | Any object type        |
 | Use case | Binary classification  | General classification |
 
+### Primitive Streams
+Java has three specialized stream types for primitives in the java.util.stream package:
+
+| Primitive Type | Stream Interface |
+| -------------- | ---------------- |
+| `int`          | `IntStream`      |
+| `long`         | `LongStream`     |
+| `double`       | `DoubleStream`   |
+
+#### ✅ Why Use Primitive Streams?
+- Performance: No boxing/unboxing overhead (e.g., int vs. Integer).
+- Extra methods: Have special methods like sum(), average(), min(), max(), asDoubleStream() etc.
+- Memory-efficient: Avoids wrapper object creation.
+
+#### 🔄 Converting Between Streams
+From Object Stream → Primitive Stream:
+```
+Stream<String> stream = Stream.of("1", "2", "3");
+IntStream intStream = stream.mapToInt(Integer::parseInt);
+```
+
+From Primitive Stream → Object Stream:
+```
+IntStream intStream = IntStream.of(1, 2, 3);
+Stream<Integer> boxed = intStream.boxed();  // Converts to Stream<Integer>
+```
+#### Useful Methods in Primitive Streams
+| Method            | Description                                |
+| ----------------- | ------------------------------------------ |
+| `sum()`           | Calculates the sum of elements.            |
+| `average()`       | Returns an `OptionalDouble` average value. |
+| `min()` / `max()` | Finds the min or max value.                |
+| `boxed()`         | Converts to wrapper `Stream<T>`.           |
+| `asLongStream()`  | Converts `IntStream` to `LongStream`.      |
+| `mapToObj()`      | Converts primitives to objects.            |
 
 
 ## Section - 3 Collections and Generics
