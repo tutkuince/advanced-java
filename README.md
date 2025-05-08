@@ -309,14 +309,17 @@ Stream<String> stream = names.stream();
 ```
 2. Intermediate operations (lazy)
 
-| Operation            | Purpose                            |
-| -------------------- | ---------------------------------- |
-| `filter()`           | Select elements based on condition |
-| `map()`              | Transform each element             |
-| `flatMap()`          | Transforms and flattens nested structures             |
-| `sorted()`           | Sort the stream                    |
-| `distinct()`         | Remove duplicates                  |
-| `limit()` / `skip()` | Limit/skip items                   |
+| Method              | Description                                        |
+| ------------------- | -------------------------------------------------- |
+| `filter(Predicate)` | Filters elements based on a condition.             |
+| `map(Function)`     | Transforms each element.                           |
+| `flatMap(Function)` | Flattens nested structures into a single stream.   |
+| `distinct()`        | Removes duplicate elements.                        |
+| `sorted()`          | Sorts elements (natural or via comparator).        |
+| `limit(long n)`     | Limits the number of elements.                     |
+| `skip(long n)`      | Skips the first `n` elements.                      |
+| `peek(Consumer)`    | Performs a side-effect (for debugging or logging). |
+
 
 3. Terminal operations (trigger execution)
 
