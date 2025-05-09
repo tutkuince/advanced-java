@@ -535,6 +535,56 @@ Stream<Integer> boxed = intStream.boxed();  // Converts to Stream<Integer>
 | `asLongStream()`  | Converts `IntStream` to `LongStream`.      |
 | `mapToObj()`      | Converts primitives to objects.            |
 
+### Optional
+In Java, Optional is a container object introduced in Java 8 that may or may not contain a non-null value. It helps avoid null pointer exceptions by providing a clear, functional-style API for handling values that might be absent.
+
+✅ Purpose of Optional:
+- Avoid null checks explicitly.
+- Make your code more readable and safe.
+- Promote functional programming style.
+
+🧰 Declaring and Using Optional
+1. Creating an Optional
+```
+Optional<String> name = Optional.of("Alice");        // value is present
+Optional<String> empty = Optional.empty();           // no value
+Optional<String> nullable = Optional.ofNullable(null); // can be null
+```
+2. Accessing Value
+```
+name.get();                // Returns the value, or throws NoSuchElementException if empty
+name.isPresent();          // Returns true if value exists
+name.ifPresent(System.out::println);  // Runs lambda only if value exists
+```
+
+3. Safe Value Handling
+```
+String result = name.orElse("Default");              // Return value or default
+String result = name.orElseGet(() -> "Fallback");    // Lazy fallback
+String result = name.orElseThrow(() -> new RuntimeException("Missing")); // Custom exception
+```
+4. Transforming the Value
+```
+Optional<String> upper = name.map(String::toUpperCase);  // Optional<A> → Optional<B>
+
+Optional<Integer> len = name.map(String::length);        // Transforms contained value
+```
+5. Chaining Optionals (flatMap)
+```
+Optional<Person> person = Optional.of(new Person("Bob", new Address("Berlin")));
+
+// Avoid nested Optionals
+Optional<String> city = person.flatMap(p -> p.getAddress()).map(Address::getCity);
+```
+
+🛑 Common Mistakes to Avoid
+- Do not use Optional for fields in data models or DTOs (bad for serialization).
+- Don't use Optional.get() without checking isPresent().
+- Don’t treat Optional as a replacement for null in all cases — it's a design choice for return types.
+
+✅ Use Optional when:
+- Returning a value that might be absent from a method.
+- You want to avoid returning null.
 
 ## Section - 3 Collections and Generics
 - Working with generics, including wildcards
