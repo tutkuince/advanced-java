@@ -586,6 +586,63 @@ Optional<String> city = person.flatMap(p -> p.getAddress()).map(Address::getCity
 - Returning a value that might be absent from a method.
 - You want to avoid returning null.
 
+### Parallel Streams
+Parallel streams are a feature of the Java Stream API (introduced in Java 8) that allow stream operations to be executed concurrently across multiple threads, leveraging multi-core processors.
+
+Instead of processing each element sequentially, a parallel stream splits the data and processes chunks in parallel, potentially speeding up performance on large datasets.
+
+🆚 Sequential vs Parallel Stream
+```
+// Sequential stream
+list.stream().forEach(System.out::println);
+
+// Parallel stream
+list.parallelStream().forEach(System.out::println);
+```
+OR
+```
+list.stream().parallel().forEach(System.out::println);
+```
+
+✅ Benefits
+- Can significantly improve performance for large collections.
+- Utilizes multiple CPU cores.
+- Offers a declarative way to express parallelism.
+
+⚠️ Things to Be Careful About
+| Concern             | Details                                                                           |
+| ------------------- | --------------------------------------------------------------------------------- |
+| **Thread-safety**   | Avoid shared mutable state (like modifying shared variables).                     |
+| **Order**           | Results may not maintain order (use `.forEachOrdered()` to preserve).             |
+| **Small datasets**  | May be **slower** than sequential streams due to overhead.                        |
+| **Splitting logic** | Works best with data sources that support efficient splitting (like `ArrayList`). |
+| **Debugging**       | Harder to debug and trace due to concurrency.                                     |
+
+🔍 Example: Comparing Sequential and Parallel
+```
+List<Integer> numbers = IntStream.rangeClosed(1, 1_000_000)
+                                 .boxed()
+                                 .collect(Collectors.toList());
+
+// Sequential sum
+long seqStart = System.currentTimeMillis();
+int seqSum = numbers.stream().reduce(0, Integer::sum);
+long seqEnd = System.currentTimeMillis();
+
+// Parallel sum
+long parStart = System.currentTimeMillis();
+int parSum = numbers.parallelStream().reduce(0, Integer::sum);
+long parEnd = System.currentTimeMillis();
+
+System.out.println("Sequential Time: " + (seqEnd - seqStart));
+System.out.println("Parallel Time: " + (parEnd - parStart));
+```
+
+🔧 When to Use Parallel Streams
+- When working with large datasets (hundreds of thousands or more).
+- When operations are CPU-bound and stateless.
+- When processing can be safely parallelized.
+
 ## Section - 3 Collections and Generics
 - Working with generics, including wildcards
 - Use a Java array and List, Set, Map and Deque collections, including convenience methods
