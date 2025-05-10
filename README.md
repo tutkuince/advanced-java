@@ -690,3 +690,15 @@ Collections.synchronizedList(list);
 - Algorithms (searching, sorting, etc.)
 - Thread-safe versions
 - Generic support for type safety
+
+Popular Collection Methods
+
+| Return Type | Method                     | Description                           |
+| --------- | ---------------------------- | ------------------------------------- |
+| **boolean**  | add(E element)            | adds to the element to the end        |
+| **boolean**  | remove(Object o)          | removes a single instance of the element specified |
+| **int** | size()                         | returns the number of elements in the collection |
+| **void**   | clear()                     | removes all of the elements |
+| **boolean**   | contains(Object o)       | does the collection contain the specified element |
+| **boolean**   | removeIf(Predicate<? super E> p)              | removes all elements that match the condition |
+| **void**   | forEach(Consumer<? super T> c)              | performs the given action on all elements in the collection |
