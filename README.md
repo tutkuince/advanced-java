@@ -678,10 +678,12 @@ And
 
 🛠️ Collections Class (Utility)
 Located in java.util.Collections, provides helper methods:
+```
 Collections.sort(list);
 Collections.reverse(list);
 Collections.max(list);
 Collections.synchronizedList(list);
+```
 
 🔑 Key Benefits
 - Reusable data structures
