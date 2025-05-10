@@ -702,3 +702,21 @@ Popular Collection Methods
 | **boolean**   | contains(Object o)       | does the collection contain the specified element |
 | **boolean**   | removeIf(Predicate<? super E> p)              | removes all elements that match the condition |
 | **void**   | forEach(Consumer<? super T> c)              | performs the given action on all elements in the collection |
+
+✅ Common Collection Methods (from java.util.Collection)
+| Method                              | Description                                                |
+| ----------------------------------- | ---------------------------------------------------------- |
+| `add(E e)`                          | Adds an element to the collection.                         |
+| `addAll(Collection<? extends E> c)` | Adds all elements from another collection.                 |
+| `remove(Object o)`                  | Removes the first occurrence of the specified element.     |
+| `removeAll(Collection<?> c)`        | Removes all elements in the specified collection.          |
+| `retainAll(Collection<?> c)`        | Retains only the elements present in the given collection. |
+| `clear()`                           | Removes all elements from the collection.                  |
+| `contains(Object o)`                | Returns `true` if the element exists.                      |
+| `containsAll(Collection<?> c)`      | Returns `true` if all elements exist in the collection.    |
+| `isEmpty()`                         | Returns `true` if the collection is empty.                 |
+| `size()`                            | Returns the number of elements.                            |
+| `iterator()`                        | Returns an iterator to loop through elements.              |
+| `toArray()`                         | Converts the collection to an array.                       |
+| `stream()`                          | Returns a sequential `Stream` (Java 8+).                   |
+| `parallelStream()`                  | Returns a parallel `Stream` (Java 8+).                     |
