@@ -644,96 +644,79 @@ System.out.println("Parallel Time: " + (parEnd - parStart));
 - When processing can be safely parallelized.
 
 ## Section - 3 Collections and Generics
-- Working with generics, including wildcards
-- Use a Java array and List, Set, Map and Deque collections, including convenience methods
-- Sort collections and arrays using Comparator and Comparable interfaces
-![image](https://github.com/tutkuince/advanced-java/assets/33215575/fbc7d709-df49-4226-9142-0a1b8ac4985f)
-![image](https://github.com/tutkuince/advanced-java/assets/33215575/3d599e84-9d2f-4ff9-bc2d-ac9b02b6031f)
-![image](https://github.com/tutkuince/advanced-java/assets/33215575/a2c4d875-62c1-411b-925e-b17fc371fa07)
-![image](https://github.com/tutkuince/advanced-java/assets/33215575/cc96a43f-b29d-4840-9e48-73260b6a913c)
-### Collections have four basic flavours:
-- <b>List</b>: An ordered collection (seqıence); provides precise control over access to an element using its integer index; duplicate elements are allowed
-  - <b>Arraylist</b>: A growable array; fast iteration and fast random access; use when you are not likely to do much insertion/deletion (shuffling required).
-  - <b>LinkedList</b>: Elements are doubly-linked to each other; fast insertion/deletion.
-  - <b>Stack</b>: Represent a list-in-first-out (LIFO) stack of objects. The "Deque" interface an its implementations are more complete and should be used instead.
+In Java, Collections refers to the Java Collections Framework (JCF), a unified architecture for storing, manipulating, and accessing groups of objects.
 
-![image](https://github.com/tutkuince/advanced-java/assets/33215575/acc0a915-ce18-4ecb-adc4-c6137c4ba486)
-![image](https://github.com/tutkuince/advanced-java/assets/33215575/7510341c-4662-402b-8307-8225e278070d)
+Key Concepts
+| Term            | Meaning                                                                                                                                              |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Collection**  | A **root interface** that represents a group of objects (like a list or set).                                                                        |
+| **Collections** | A **utility class** in `java.util.Collections` that provides static methods for working with collections (e.g., `sort()`, `shuffle()`, `reverse()`). |
 
-- <b>Set</b>: Collections with no duplicate elements
-  - <b>HashSet</b>
-    - Unsorted, unordered <i>Set</i>, uses the hashcode of the object being inserted; the more efficient your <i>hashCode()</i> implementation, the better access performance you will get.
-    - use this class when you want to a collection with no duplicates and you don't care about order when you iterate through it.
-  - <b>LinkedHashSet</b>
-    - an ordered version of <i>HashSet</i> (insertion order).
-    - elements are doubly-lined to each other
-    - use this class instead of HashSet when you care about the iteration order.
-  - <b>TreeSet</b>
-    - a sorted collection ("Tree")
-    - elements can be sorted according to their "natural order" - for <i>String</i>'s the natural order is alphabetic; for <i>Integer'</i>s, the natural order is numeric.
+📚 Hierarchy of the Java Collections Framework
+              
+              Collection (Interface)
+                 /      |       \
+            List     Set     Queue (Interfaces)
+             |         |         |
+       ArrayList   HashSet   LinkedList (Classes)
+       LinkedList  TreeSet   PriorityQueue
 
-![image](https://github.com/tutkuince/advanced-java/assets/33215575/4132e9a9-6faa-4344-90f7-bf0200c0c324)
-- <b>Map</b>: maps keys to values; keys are unique; each key can map to at most one value
-  - <b>HashMap</b>
-    - unsorted, unordered <i>Map</i>.
-    - uses the hashcode of the object being inserted; the more efficient your <i>hashCode()</i> implementation, the better access performance you will get.
-    - use this class when you want a <i>Map</i> and you don't care about order when you iterate through it.
-    - allows one <i>null</i> key and multiple <i>null</i> values.
-  - <b>LinkedHashMap</b>
-    - maintains insertion order
-  - <b>TreeMap</b>
-    - a sorted Map; sorted by natural order of it's keys or by a custom order(via a comparator)
-  - <b>Hashtable</b>
-    - similar to <i>HashMap</i> except <i>Hashtable</i> is thread-safe(slower) anbd nulls are not allowed.
-![image](https://github.com/tutkuince/advanced-java/assets/33215575/51ff6fac-f016-4bb6-8f8f-aa7f67ecb9df)
-![image](https://github.com/tutkuince/advanced-java/assets/33215575/53374270-86d3-456e-b8f3-75a87e87421a)
+And
 
-- <b>Queue</b>: a collection that specifies the order in which elements are to be processed.
-  - Typically the order is FIFO (First In First Out).
-  - Exceptions are priority queues ( order is natural ordering or according to a supplied comparator) and LIFO (Last In First Out) queues (stacks).
-  - <i>LinkedList</i>
-    - as <i>LinkedList</i> implements <i>Queue</i>; basic queues can be handled with a <i>LinkedList</i>
-    - <i>PriorityQueue</i>
-      - <i>PriorityQueue</i> orders the elements relative to each other such that "priority-in, priority-out" (as opposed to a FIFO or LIFO)
-      - the elements are either ordered by natural order or by a custom order via a comparator.
-      - elements that are sorted first will be accessed first.
-- <b>Deque</b>
-  - deque ("double ended queue")
-  - access from both ends permitted
-  - can be used as both FIFO (queue) and LIFO (stack).
-  - <i>ArrayDeque</i>
-    - expandable-array implementation of the <i>Deque</i> interface (no capacity restrictions)
-    - API: "likely to be faster than <i>Stack</i> when used as a stack, and faster than <i>LinkedList</i> when used as a queue".
-![image](https://github.com/tutkuince/advanced-java/assets/33215575/ee6fd5c8-3e72-4785-a3e1-c366d33b7fa7)
-![image](https://github.com/tutkuince/advanced-java/assets/33215575/a4a57519-776e-4a62-b08e-1e07a5e4d463)
-![image](https://github.com/tutkuince/advanced-java/assets/33215575/1c116a2e-1a99-48e8-af9e-e71e7af61e04)
-### Sorting
-- Both collections and arrays can be sorted and searched using methods in the API
-- The <i>Collections</i> class is a utility class i.e. a class which consist exclusively of static methods, used for operating on collections.
-- The <i>Arrays</i> class is a also a utility class, the <i>Arrays</i> class however, operates on native array only ([] styntax).
-- One can convert an array (of reference types) to a <i>List</i> using the <i>Arrays.asList</i> method. The returned <i>List</i> can then be passed to useful methods that exist in the <i>Collections</i> class.
-#### <i>Comparable</i> and <i>Comparator</i> Interfaces
-- The <i>Comparable<T></i> and <i>Comparator<T></i> interfaces are used for comparing objects of similar type.
-- Both are functional interfaces.
-- Sorting is a classic example where they are used.
-- <i>java.lang.</i>Comparable and <i>java.util.</i>.Comparator
-- Note: if you add an object of a class to e.g. <i>TreeSet</i> and the class does NOT implement <i>Comparable</i>, you will get a <i>ClassCastException</i>
-##### Comparable Interface
-- compareTo logic: return an <i>int</i> value based on the following:
-  - return a positive number if the current object is larger than the object passed in
-  - return 0 if the current object is equivalent to the object passed in
-  - return a negative number if the current object is smaller than the object passed in
-- This logic can be delegated to existing types (<i>String</i>, <i>Integer</i>) that already have implemented <i>Comparable</i>. In other words, if you are comparing <i>Integer's</i> you can delegate.
-- <i>Comparable</i> - compareTo() and equals() consistency.
-  - When are 2 objects equal?
-    - compareTo() -> returns 0
-    - equals()    -> return <i>true</i>
-  - API: "The natural ordering for a class "C" is said to be <i>consistent with equals</i> if and only if e1.compareTo(e2) == 0 has the same boolean value as e1.equals(e2) for every e1 and e2 of class "C"
-  - We are "strongly recommened" to keep our <i>Comparable</i> classes consistent with equals because "sorted sets (or sorted maps)... behave strangely" otherwise.
-##### Comparator Interface
-- What if the objects we wanted to sort did not implement <i>Comparable</i> or if we wanted to sort in several different ways? Answer: <i>Comparator</i>
-- <i>Comparator</i> is also a functional interface:
-  - int compare(T o1, T o2)
-- The logic internally is the same as for <i>compareTo()</i>
-- Typically, this is coded externally to the class whose objects we are comparing so we need to compare 2 objects.
-  - as <i>Comparable</i> is coded internally to the class, we just need the one/other object we want to compare to <i>"this"</i> object.
+                Map (Interface)
+                /         \
+           HashMap     TreeMap (Classes)
+           LinkedHashMap
+
+🧩 Main Interfaces and Their Characteristics
+| Interface | Description                  | Common Implementations                |
+| --------- | ---------------------------- | ------------------------------------- |
+| **List**  | Ordered, allows duplicates   | `ArrayList`, `LinkedList`, `Vector`   |
+| **Set**   | Unordered, **no duplicates** | `HashSet`, `LinkedHashSet`, `TreeSet` |
+| **Queue** | FIFO structure               | `LinkedList`, `PriorityQueue`         |
+| **Map**   | Key-value pairs              | `HashMap`, `TreeMap`, `LinkedHashMap` |
+
+🛠️ Collections Class (Utility)
+Located in java.util.Collections, provides helper methods:
+```
+Collections.sort(list);
+Collections.reverse(list);
+Collections.max(list);
+Collections.synchronizedList(list);
+```
+
+🔑 Key Benefits
+- Reusable data structures
+- Algorithms (searching, sorting, etc.)
+- Thread-safe versions
+- Generic support for type safety
+
+Popular Collection Methods
+
+| Return Type | Method                     | Description                           |
+| --------- | ---------------------------- | ------------------------------------- |
+| **boolean**  | add(E element)            | adds to the element to the end        |
+| **boolean**  | remove(Object o)          | removes a single instance of the element specified |
+| **int** | size()                         | returns the number of elements in the collection |
+| **void**   | clear()                     | removes all of the elements |
+| **boolean**   | contains(Object o)       | does the collection contain the specified element |
+| **boolean**   | removeIf(Predicate<? super E> p)              | removes all elements that match the condition |
+| **void**   | forEach(Consumer<? super T> c)              | performs the given action on all elements in the collection |
+
+✅ Common Collection Methods (from java.util.Collection)
+| Method                              | Description                                                |
+| ----------------------------------- | ---------------------------------------------------------- |
+| `add(E e)`                          | Adds an element to the collection.                         |
+| `addAll(Collection<? extends E> c)` | Adds all elements from another collection.                 |
+| `remove(Object o)`                  | Removes the first occurrence of the specified element.     |
+| `removeAll(Collection<?> c)`        | Removes all elements in the specified collection.          |
+| `retainAll(Collection<?> c)`        | Retains only the elements present in the given collection. |
+| `clear()`                           | Removes all elements from the collection.                  |
+| `contains(Object o)`                | Returns `true` if the element exists.                      |
+| `containsAll(Collection<?> c)`      | Returns `true` if all elements exist in the collection.    |
+| `isEmpty()`                         | Returns `true` if the collection is empty.                 |
+| `size()`                            | Returns the number of elements.                            |
+| `iterator()`                        | Returns an iterator to loop through elements.              |
+| `toArray()`                         | Converts the collection to an array.                       |
+| `stream()`                          | Returns a sequential `Stream` (Java 8+).                   |
+| `parallelStream()`                  | Returns a parallel `Stream` (Java 8+).                     |
