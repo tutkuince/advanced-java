@@ -720,3 +720,33 @@ Popular Collection Methods
 | `toArray()`                         | Converts the collection to an array.                       |
 | `stream()`                          | Returns a sequential `Stream` (Java 8+).                   |
 | `parallelStream()`                  | Returns a parallel `Stream` (Java 8+).                     |
+
+
+### List
+In Java, a List is an ordered collection (also known as a sequence) that:
+- Maintains the order of elements as they were inserted
+- Allows duplicate elements
+- Supports index-based access to elements (like arrays)
+
+List is an Interface
+It is part of the Java Collections Framework: It extends the Collection interface and adds methods for positional access, searching, iteration, and more.
+
+📚 Common Implementations
+| Class        | Description                                              |
+| ------------ | -------------------------------------------------------- |
+| `ArrayList`  | Fast for random access; backed by a dynamic array.       |
+| `LinkedList` | Efficient insertions/deletions; uses doubly linked list. |
+| `Vector`     | Synchronized version (legacy).                           |
+| `Stack`      | Subclass of `Vector` with LIFO behavior (legacy).        |
+
+🔧 Key Methods
+| Method                | Description                                 |
+| --------------------- | ------------------------------------------- |
+| `add(E e)`            | Adds an element to the end.                 |
+| `add(int index, E e)` | Inserts at a specific position.             |
+| `get(int index)`      | Returns the element at that index.          |
+| `set(int index, E e)` | Replaces the element at that index.         |
+| `remove(int index)`   | Removes the element at the specified index. |
+| `indexOf(Object o)`   | Returns first index of the object.          |
+| `size()`              | Returns the number of elements.             |
+| `isEmpty()`           | Returns `true` if the list is empty.        |
