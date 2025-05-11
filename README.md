@@ -750,3 +750,33 @@ It is part of the Java Collections Framework: It extends the Collection interfac
 | `indexOf(Object o)`   | Returns first index of the object.          |
 | `size()`              | Returns the number of elements.             |
 | `isEmpty()`           | Returns `true` if the list is empty.        |
+
+### Set
+In Java, a Set is a collection that does not allow duplicate elements. It is part of the Java Collections Framework and is used when you want to store unique elements only, with no concern for indexing or order (depending on implementation).
+
+✅ Set is an Interface
+It extends the Collection interface and inherits all its methods, while enforcing uniqueness.
+
+🧩 Key Characteristics
+- No duplicates allowed
+- Can contain null (depends on implementation)
+- No guaranteed order (unless you use specific implementations like LinkedHashSet or TreeSet)
+
+📚 Common Implementations
+| Implementation  | Characteristics                                           |
+| --------------- | --------------------------------------------------------- |
+| `HashSet`       | Unordered, fast lookup using hash table                   |
+| `LinkedHashSet` | Maintains **insertion order**                             |
+| `TreeSet`       | Maintains **sorted order** (natural or with a comparator) |
+
+🔧 Common Methods
+| Method               | Description                         |
+| -------------------- | ----------------------------------- |
+| `add(E e)`           | Adds element if not already present |
+| `remove(Object o)`   | Removes the specified element       |
+| `contains(Object o)` | Checks if element exists            |
+| `isEmpty()`          | Checks if set is empty              |
+| `size()`             | Returns number of elements          |
+| `clear()`            | Removes all elements                |
+
+
